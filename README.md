@@ -21,5 +21,5 @@
    ```sh
    git clone https://github.com/shunkita/A2HiresViewer.git
    cd A2HiresViewer
-2.    Xcode で A2HiresViewer.xcodeproj を開きます。
-3.    Run ボタンを押してアプリをビルド＆実行します。
+2. Xcode で A2HiresViewer.xcodeproj を開きます。
+3. Run ボタンを押してアプリをビルド＆実行します。

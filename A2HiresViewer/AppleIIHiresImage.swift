@@ -4,7 +4,6 @@
 //
 //  Created by Shunichi Kitahara on 2025/02/11.
 //
-
 import AppKit
 import SwiftUICore
 
