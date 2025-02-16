@@ -18,13 +18,13 @@ extension NSColor {
 
 struct AppleIIHiresImage {
     let pixels: [[NSColor]] // 280x192 の NSColor 配列
-
+ 
     // Apple II の Hires 画像データから AppleIIHiresImage を作成する
     init?(from url: URL) {
         guard var data = try? Data(contentsOf: url) else {
             return nil
         }
-
+    
         // 8192バイト未満なら0x00でパディング
         if data.count < 8192 {
             data.append(contentsOf: [UInt8](repeating: 0x00, count: 8192 - data.count))
@@ -36,6 +36,9 @@ struct AppleIIHiresImage {
         }
 
         self.pixels = AppleIIHiresImage.decodeHiresImage(from: data)
+    }
+    init() {
+        self.pixels = Array(repeating: Array(repeating: .black, count: 280), count: 192)
     }
 
     // Apple II Hires 画像データのデコード処理
