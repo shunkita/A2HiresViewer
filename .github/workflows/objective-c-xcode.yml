@@ -20,9 +20,7 @@ jobs:
         run: sudo xcode-select -switch /Applications/Xcode_16.2.app
 
       - name: Install dependencies
-        run: |
-          brew install xcpretty || true
-          sudo xcodebuild -license accept
+        run: sudo xcodebuild -license accept
 
       - name: Build and analyze
         run: |
