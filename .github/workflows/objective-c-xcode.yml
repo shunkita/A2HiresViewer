@@ -43,3 +43,9 @@ jobs:
           file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
           xcodebuild clean build analyze -scheme "$scheme" -"$filetype_parameter" "$file_to_build" | xcpretty
           exit ${PIPESTATUS[0]}
+- name: Upload build log
+  if: failure()
+  uses: actions/upload-artifact@v3
+  with:
+    name: build-log
+    path: build.log
