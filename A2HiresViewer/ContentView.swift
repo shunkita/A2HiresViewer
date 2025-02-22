@@ -28,9 +28,19 @@ struct ContentView: View {
             }
         }
         .padding()
+        .onDrop(of: [.fileURL], isTargeted: nil) { providers in
+            guard let item = providers.first else { return false }
+            _ = item.loadObject(ofClass: URL.self) { url, _ in
+                if let fileURL = url {
+                    DispatchQueue.main.async {
+                        viewModel.loadHiresImage(from: fileURL)
+                    }
+                }
+            }
+            return true
+        }
     }
 }
-
 
 #Preview {
     ContentView()

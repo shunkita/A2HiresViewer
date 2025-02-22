@@ -9,25 +9,22 @@ import SwiftUI
 import AppKit  // NSImage を扱うために必要
 
 class HiresViewModel: ObservableObject {
-    @Published var hiresImage: AppleIIHiresImage?
-    
-    var image: NSImage? {
-        guard let hiresImage = hiresImage else { return nil }
-        return hiresImage.toNSImage() // AppleIIHiresImage に NSImage 変換処理を追加
-    }
+    @Published var image: NSImage?
+    private var hiresImage: AppleIIHiresImage? // 初期化を遅延
 
     func openFile() {
         let panel = NSOpenPanel()
-        panel.allowedContentTypes = [.data]
+//        panel.allowedFileTypes = ["bin"]
         panel.allowsMultipleSelection = false
-        panel.canChooseDirectories = false
 
         if panel.runModal() == .OK, let url = panel.url {
-            if let image = AppleIIHiresImage(from: url) {
-                DispatchQueue.main.async {
-                    self.hiresImage = image
-                }
-            }
+            loadHiresImage(from: url)
         }
+    }
+
+    func loadHiresImage(from url: URL) {
+        guard let hiresImage = AppleIIHiresImage(from: url) else { return }
+        self.hiresImage = hiresImage
+        self.image = hiresImage.toNSImage()
     }
 }

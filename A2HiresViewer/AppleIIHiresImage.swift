@@ -12,7 +12,7 @@ struct XYPosition: Equatable {
     let y: Int
 }
 
-extension NSColor {
+extension NSColor {         // 紫は独自色作成
     static let brightPurple = NSColor(red: 0.85, green: 0.0, blue: 0.85, alpha: 1.0)
 }
 
@@ -30,7 +30,7 @@ struct AppleIIHiresImage {
             data.append(contentsOf: [UInt8](repeating: 0x00, count: 8192 - data.count))
         }
 
-        // 8192バイトより長い場合は何もしない（既存の動作と同じ）
+        // 8192バイトより長い場合は何もしない
         guard data.count == 8192 else {
             return nil
         }
