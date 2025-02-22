@@ -12,5 +12,6 @@ struct A2HiresViewerApp: App {
         WindowGroup {
             ContentView()
         }
+        .windowResizability(.contentSize) // **コンテンツサイズに応じたリサイズ制限**
     }
 }

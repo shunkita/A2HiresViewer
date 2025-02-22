@@ -27,6 +27,8 @@ struct ContentView: View {
                 viewModel.openFile()
             }
         }
+        .frame(width: 560) // **ウィンドウの横幅を 560px に制限**
+         .fixedSize() // **余分なリサイズを防ぐ**
         .padding()
         .onDrop(of: [.fileURL], isTargeted: nil) { providers in
             guard let item = providers.first else { return false }
