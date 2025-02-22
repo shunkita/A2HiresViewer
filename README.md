@@ -1,5 +1,7 @@
 # A2HiresViewer
 
+![A2HiresViewer Sample](images/sample.png)
+
 **A2HiresViewer** は、Apple II の Hi-Res 画像（8192 バイトの HGR フォーマット）を macOS 上で表示するための SwiftUI ベースのアプリケーションです。
 
 ## 特徴
