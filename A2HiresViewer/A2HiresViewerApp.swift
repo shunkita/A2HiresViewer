@@ -8,10 +8,19 @@ import SwiftUI
 
 @main
 struct A2HiresViewerApp: App {
+    @StateObject private var viewModel = HiresViewModel()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(viewModel)
         }
         .windowResizability(.contentSize) // **コンテンツサイズに応じたリサイズ制限**
+        .commands { CommandGroup(replacing: .newItem) {
+            Button("Open...") {
+                viewModel.openFile() 
+            }
+            .keyboardShortcut("O", modifiers: .command)
+            }
+        }
     }
 }

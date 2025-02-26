@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var viewModel = HiresViewModel()
+    @EnvironmentObject  var viewModel : HiresViewModel
 
     var body: some View {
         VStack {
